@@ -15,22 +15,27 @@ public class HelloController {
     }
 
     @GetMapping("hello-mvc")
-    public String helloMvc(@RequestParam(value = "num") int num, Model model){
+    public String helloMvc(@RequestParam(value = "name") String name, Model model){
         //request로 변수 값을 받고 num으로 저장 시킨다
-        model.addAttribute("num",num);
+        model.addAttribute("name",name);
         //위의 내용을 받아서 model로 전달 -> hello-mvc의 num과 연결시킨다,
         return  "hello-template";
     }
 
     @GetMapping("hello-string")
-    @ResponseBody //return 하는 것을 그대로 나올 수 있게 출력.
+    @ResponseBody
+    //HTTPMessageConvert가 문자를 받으면
+    //StringHTTPMessageConvert가
+    //아! 그대로 돌려줘야겠구나!라고 판단함
     public  String helloString(@RequestParam("name") String name){
         return  "hello " + name;
     }
 
     @GetMapping("hello-api")
     @ResponseBody
-    //HTTPMessageConverter가 사용됨 json으로 변환해서 그대로 전달한다.
+    //HTTPMessageConverter가 받아..
+    //객체가 오면 ??
+    // MappingJackson2HttpMessageConvert는 JSON으로 돌려줘야겠다!라고 판단함
     public Hello helloApi(@RequestParam("name") String name){
         Hello hello = new Hello();
         hello.setName(name);
