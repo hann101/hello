@@ -33,12 +33,14 @@ public class MemberController {
     @PostMapping("/members/new")
     public String create(MemberForm form){
         //get에서 받으 ㄴname 변수를 통해 form에 name 이 전달하게됨.
+        //form이라는 객체에 name="spring1"이라는 녀석을 담고 있고
         Member member = new Member();
         member.setName(form.getName());
-        //form에서 getName으로 html의 name값을 전달. spring에서 자동으로 해준다.
+        //form.getName으로 name="spring1"이라는 녀석을 불러
+        //setName으로 멤버 객체에 저장
 
         memberService.join(member);
-        //서비스를 통해 저장을 하게됨.
+        //서비스를 join의 save 통해 저장을 하게됨.
         return "redirect:/";
     }
 

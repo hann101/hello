@@ -3,6 +3,7 @@ package com.inflearn.hello.service;
 
 import com.inflearn.hello.domain.Member;
 
+import com.inflearn.hello.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class MemberServiceTest {
+    private MemberRepository memberRepository;
     MemberService memberService = new MemberService(memberRepository);
 
 
